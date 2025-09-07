@@ -67,20 +67,22 @@ class _MainNavigationState extends State<MainNavigation> {
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
           type: BottomNavigationBarType.fixed,
+          selectedFontSize: 12,
+          unselectedFontSize: 10,
           items: _navigationItems
               .map((item) => BottomNavigationBarItem(
                     icon: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      padding: const EdgeInsets.symmetric(vertical: 2),
                       child: Icon(
                         item.icon,
-                        size: 24,
+                        size: 22,
                       ),
                     ),
                     activeIcon: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      padding: const EdgeInsets.symmetric(vertical: 2),
                       child: Icon(
                         item.activeIcon,
-                        size: 24,
+                        size: 22,
                       ),
                     ),
                     label: item.label,

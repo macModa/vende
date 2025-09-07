@@ -11,6 +11,7 @@ import '../../features/products/presentation/screens/home_screen.dart';
 import '../../features/products/presentation/screens/categories_screen.dart';
 import '../../features/products/presentation/screens/product_detail_screen.dart';
 import '../../features/products/presentation/screens/search_screen.dart';
+import '../../features/products/presentation/screens/add_product_screen.dart';
 import '../../features/cart/presentation/screens/cart_screen.dart';
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../shared/widgets/main_navigation.dart';
@@ -76,6 +77,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           return ProductDetailScreen(productId: productId);
         },
       ),
+      
+      // Add Product Route
+      GoRoute(
+        path: '/add-product',
+        name: 'add-product',
+        builder: (context, state) => const AddProductScreen(),
+      ),
     ],
     
     // Redirect to appropriate screen based on auth state
@@ -137,5 +145,9 @@ class AppNavigation {
   
   static void toProductDetail(BuildContext context, String productId) {
     context.goNamed('product-detail', pathParameters: {'id': productId});
+  }
+  
+  static void toAddProduct(BuildContext context) {
+    context.goNamed('add-product');
   }
 }

@@ -6,6 +6,12 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../shared/services/navigation_service.dart';
 import '../../../auth/data/mock_auth_service.dart';
 import '../../../auth/presentation/providers/mock_auth_providers.dart';
+import 'edit_profile_screen.dart';
+import 'orders_screen.dart';
+import 'wishlist_screen.dart';
+import 'addresses_screen.dart';
+import 'settings_screen.dart';
+import 'support_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -111,33 +117,117 @@ class ProfileScreen extends ConsumerWidget {
             
             const SizedBox(height: 24),
             
-            // Menu Options
-            _buildMenuOption(
-              context,
-              icon: PhosphorIcons.shoppingBag(),
-              title: 'My Orders',
-              subtitle: 'View your order history',
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Orders feature coming soon'),
+            // Profile Actions
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    child: InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EditProfileScreen(),
+                        ),
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          children: [
+                            Icon(
+                              PhosphorIcons.pencil(),
+                              size: 32,
+                              color: AppColors.primary,
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Edit Profile',
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                );
-              },
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Card(
+                    child: InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const OrdersScreen(),
+                        ),
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          children: [
+                            Stack(
+                              children: [
+                                Icon(
+                                  PhosphorIcons.shoppingBag(),
+                                  size: 32,
+                                  color: AppColors.primary,
+                                ),
+                                Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: Container(
+                                    width: 12,
+                                    height: 12,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.accent,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '2',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'My Orders',
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             
+            const SizedBox(height: 16),
+            
+            // Menu Options
             _buildMenuOption(
               context,
               icon: PhosphorIcons.heart(),
               title: 'Wishlist',
               subtitle: 'Your saved products',
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Wishlist feature coming soon'),
-                  ),
-                );
-              },
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WishlistScreen(),
+                ),
+              ),
             ),
             
             _buildMenuOption(
@@ -145,13 +235,12 @@ class ProfileScreen extends ConsumerWidget {
               icon: PhosphorIcons.mapPin(),
               title: 'Addresses',
               subtitle: 'Manage delivery addresses',
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Address management coming soon'),
-                  ),
-                );
-              },
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddressesScreen(),
+                ),
+              ),
             ),
             
             _buildMenuOption(
@@ -159,13 +248,12 @@ class ProfileScreen extends ConsumerWidget {
               icon: PhosphorIcons.gear(),
               title: 'Settings',
               subtitle: 'App preferences and account settings',
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Settings coming soon'),
-                  ),
-                );
-              },
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingsScreen(),
+                ),
+              ),
             ),
             
             _buildMenuOption(
@@ -173,13 +261,12 @@ class ProfileScreen extends ConsumerWidget {
               icon: PhosphorIcons.question(),
               title: 'Help & Support',
               subtitle: 'Get help and contact support',
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Support feature coming soon'),
-                  ),
-                );
-              },
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SupportScreen(),
+                ),
+              ),
             ),
             
             const SizedBox(height: 24),

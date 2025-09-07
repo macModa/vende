@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -5,6 +6,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../../core/theme/app_theme.dart';
 import '../../data/product_repository.dart';
+import '../../../cart/data/cart_repository.dart';
+import '../../../../shared/services/navigation_service.dart';
 
 class ProductDetailScreen extends ConsumerWidget {
   final String productId;
@@ -49,26 +52,31 @@ class ProductDetailScreen extends ConsumerWidget {
                 // Product Images
                 SizedBox(
                   height: 300,
-                  child: PageView.builder(
-                    itemCount: product.imageUrls.length,
-                    itemBuilder: (context, index) {
-                      return CachedNetworkImage(
-                        imageUrl: product.imageUrls[index],
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        errorWidget: (context, url, error) => Container(
+                  child: product.imageUrls.isEmpty 
+                      ? Container(
                           color: AppColors.background,
                           child: Center(
-                            child: Icon(
-                              PhosphorIcons.image(),
-                              size: 64,
-                              color: AppColors.textLight,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  PhosphorIcons.image(),
+                                  size: 64,
+                                  color: AppColors.textLight,
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  'No Image Available',
+                                  style: TextStyle(color: AppColors.textSecondary),
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                      );
+                        )
+                      : PageView.builder(
+                    itemCount: product.imageUrls.length,
+                    itemBuilder: (context, index) {
+                      return _buildProductImage(product.imageUrls[index]);
                     },
                   ),
                 ),
@@ -90,34 +98,38 @@ class ProductDetailScreen extends ConsumerWidget {
 
                       Row(
                         children: [
-                          Text(
-                            '${product.price.toStringAsFixed(0)} DT',
-                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                              color: AppColors.primary,
-                              fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: Text(
+                              '${product.price.toStringAsFixed(0)} DT',
+                              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                color: AppColors.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                          const Spacer(),
-                          Row(
-                            children: [
-                              Icon(
-                                PhosphorIcons.star(PhosphorIconsStyle.fill),
-                                size: 20,
-                                color: AppColors.accent,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                '${product.rating}',
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                '(${product.reviewCount})',
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                  color: AppColors.textSecondary,
+                          Flexible(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Icon(
+                                  PhosphorIcons.star(PhosphorIconsStyle.fill),
+                                  size: 20,
+                                  color: AppColors.accent,
                                 ),
-                              ),
-                            ],
+                                const SizedBox(width: 4),
+                                Text(
+                                  '${product.rating}',
+                                  style: Theme.of(context).textTheme.titleMedium,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '(${product.reviewCount})',
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -225,9 +237,14 @@ class ProductDetailScreen extends ConsumerWidget {
                       child: ElevatedButton.icon(
                         onPressed: product.inStock
                             ? () {
+                                ref.read(cartProvider.notifier).addToCart(product);
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Added to cart!'),
+                                  SnackBar(
+                                    content: Text('${product.name} added to cart!'),
+                                    action: SnackBarAction(
+                                      label: 'View Cart',
+                                      onPressed: () => AppNavigation.toCart(context),
+                                    ),
                                   ),
                                 );
                               }
@@ -240,11 +257,9 @@ class ProductDetailScreen extends ConsumerWidget {
                     ElevatedButton(
                       onPressed: product.inStock
                           ? () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Buy now feature coming soon'),
-                                ),
-                              );
+                              // Add to cart and navigate to cart
+                              ref.read(cartProvider.notifier).addToCart(product);
+                              AppNavigation.toCart(context);
                             }
                           : null,
                       style: ElevatedButton.styleFrom(
@@ -258,6 +273,46 @@ class ProductDetailScreen extends ConsumerWidget {
             : null,
         loading: () => null,
         error: (_, __) => null,
+      ),
+    );
+  }
+
+  Widget _buildProductImage(String imageUrl) {
+    // Handle base64 data URLs (for locally added images)
+    if (imageUrl.startsWith('data:image')) {
+      try {
+        final base64String = imageUrl.split(',')[1];
+        final bytes = base64Decode(base64String);
+        return Image.memory(
+          bytes,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => _buildPlaceholderImage(),
+        );
+      } catch (e) {
+        return _buildPlaceholderImage();
+      }
+    }
+    
+    // Handle network images
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      fit: BoxFit.cover,
+      placeholder: (context, url) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+      errorWidget: (context, url, error) => _buildPlaceholderImage(),
+    );
+  }
+
+  Widget _buildPlaceholderImage() {
+    return Container(
+      color: AppColors.background,
+      child: Center(
+        child: Icon(
+          PhosphorIcons.image(),
+          size: 64,
+          color: AppColors.textLight,
+        ),
       ),
     );
   }

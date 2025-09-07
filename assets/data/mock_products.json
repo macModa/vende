@@ -57,9 +57,9 @@
       "price": 450.0,
       "category": "textiles",
       "imageUrls": [
-        "https://via.placeholder.com/400x400?text=Berber+Carpet+1",
-        "https://via.placeholder.com/400x400?text=Berber+Carpet+2",
-        "https://via.placeholder.com/400x400?text=Berber+Carpet+3"
+        "https://picsum.photos/400/400?random=1",
+        "https://picsum.photos/400/400?random=2",
+        "https://picsum.photos/400/400?random=3"
       ],
       "seller": "Kairouan Artisans Cooperative",
       "rating": 4.8,
@@ -81,8 +81,8 @@
       "price": 85.0,
       "category": "pottery",
       "imageUrls": [
-        "https://via.placeholder.com/400x400?text=Pottery+Vase+1",
-        "https://via.placeholder.com/400x400?text=Pottery+Vase+2"
+        "https://picsum.photos/400/400?random=4",
+        "https://picsum.photos/400/400?random=5"
       ],
       "seller": "Nabeul Ceramics Workshop",
       "rating": 4.6,
@@ -104,8 +104,8 @@
       "price": 220.0,
       "category": "jewelry",
       "imageUrls": [
-        "https://via.placeholder.com/400x400?text=Silver+Necklace+1",
-        "https://via.placeholder.com/400x400?text=Silver+Necklace+2"
+        "https://picsum.photos/400/400?random=6",
+        "https://picsum.photos/400/400?random=7"
       ],
       "seller": "Atlas Mountain Jewelers",
       "rating": 4.9,
@@ -127,8 +127,8 @@
       "price": 12.0,
       "category": "food",
       "imageUrls": [
-        "https://via.placeholder.com/400x400?text=Harissa+1",
-        "https://via.placeholder.com/400x400?text=Harissa+2"
+        "https://picsum.photos/400/400?random=8",
+        "https://picsum.photos/400/400?random=9"
       ],
       "seller": "Tunis Spice Market",
       "rating": 4.7,
@@ -150,9 +150,9 @@
       "price": 180.0,
       "category": "leather",
       "imageUrls": [
-        "https://via.placeholder.com/400x400?text=Leather+Bag+1",
-        "https://via.placeholder.com/400x400?text=Leather+Bag+2",
-        "https://via.placeholder.com/400x400?text=Leather+Bag+3"
+        "https://picsum.photos/400/400?random=10",
+        "https://picsum.photos/400/400?random=11",
+        "https://picsum.photos/400/400?random=12"
       ],
       "seller": "Sousse Leather Artisans",
       "rating": 4.5,
@@ -174,8 +174,8 @@
       "price": 320.0,
       "category": "art",
       "imageUrls": [
-        "https://via.placeholder.com/400x400?text=Wood+Carving+1",
-        "https://via.placeholder.com/400x400?text=Wood+Carving+2"
+        "https://picsum.photos/400/400?random=13",
+        "https://picsum.photos/400/400?random=14"
       ],
       "seller": "Medina Wood Carvers",
       "rating": 4.8,
@@ -197,7 +197,7 @@
       "price": 8.0,
       "category": "food",
       "imageUrls": [
-        "https://via.placeholder.com/400x400?text=Merguez+Spice+1"
+        "https://picsum.photos/400/400?random=15"
       ],
       "seller": "Tunis Spice Market",
       "rating": 4.6,
@@ -218,8 +218,8 @@
       "price": 95.0,
       "category": "textiles",
       "imageUrls": [
-        "https://via.placeholder.com/400x400?text=Silk+Scarf+1",
-        "https://via.placeholder.com/400x400?text=Silk+Scarf+2"
+        "https://picsum.photos/400/400?random=16",
+        "https://picsum.photos/400/400?random=17"
       ],
       "seller": "Sfax Silk Weavers",
       "rating": 4.7,
