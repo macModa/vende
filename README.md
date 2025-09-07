@@ -1,6 +1,16 @@
-# Tunisian Marketplace
+# Tunisian Marketplace - Flutter App with Firebase
 
-A Flutter mobile application for a traditional Tunisian marketplace featuring authentic handcrafted items from skilled artisans.
+A traditional Tunisian marketplace mobile and web application with complete Firebase backend integration, featuring real-time updates, authentication, and cloud storage.
+
+## 🚀 New Features Added
+
+- **Complete Firebase Integration** (Auth, Firestore, Storage)
+- **Real-time Data Sync** with Firestore streams
+- **Cloud Image Storage** with Firebase Storage  
+- **Unified Repository Pattern** supporting both Firebase and mock data
+- **Docker Development Environment** for cross-platform development
+- **Advanced State Management** with Riverpod providers
+- **Production-Ready Architecture** with clean separation of concerns
 
 ## Features
 
@@ -127,6 +137,56 @@ lib/
    ```bash
    flutter run
    ```
+
+## 🐳 Docker Development (Windows/Cross-Platform)
+
+### Why Use Docker?
+- **Firebase Support**: Full Firebase integration works in Docker containers
+- **Cross-Platform**: Develop on Windows, Linux, or macOS
+- **Consistent Environment**: Same setup across different machines
+- **Web Development**: Perfect for web-based Firebase features
+
+### Quick Docker Setup
+
+1. **Prerequisites**
+   - Docker Desktop installed
+   - Git
+
+2. **Clone and Start**
+   ```bash
+   git clone <repository-url>
+   cd tunisian_marketplace
+   
+   # Build and start development environment
+   docker-compose -f docker-compose.dev.yml up --build
+   ```
+
+3. **Access Application**
+   - **Web App**: http://localhost:3000
+   - **Firebase Emulator UI**: http://localhost:4000
+   - **Flutter DevTools**: http://localhost:9100
+
+### Docker Commands
+
+```bash
+# Start development environment (detached)
+docker-compose -f docker-compose.dev.yml up -d
+
+# View logs
+docker-compose -f docker-compose.dev.yml logs -f flutter-dev
+
+# Enter container for manual commands
+docker exec -it tunisian_marketplace_dev bash
+
+# Inside container, you can run:
+flutter pub get
+flutter pub run build_runner build
+flutter analyze
+flutter test
+
+# Stop and cleanup
+docker-compose -f docker-compose.dev.yml down
+```
 
 ### Mock Data
 

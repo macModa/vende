@@ -104,9 +104,11 @@ class _AddProductScreenState extends ConsumerState<AddProductScreen> {
     try {
       // Read the image file as bytes
       final bytes = await imageFile.readAsBytes();
+      print('Image file size: ${bytes.length} bytes'); // Debug
       
       // Convert to base64 for storage
       final base64String = base64Encode(bytes);
+      print('Base64 string length: ${base64String.length}'); // Debug
       
       // Generate a unique ID for this image
       final timestamp = DateTime.now().millisecondsSinceEpoch;
@@ -117,7 +119,11 @@ class _AddProductScreenState extends ConsumerState<AddProductScreen> {
         _base64Images.add(base64String);
         _imageUrls.add('data:image/jpeg;base64,$base64String');
       });
+      
+      print('Images added: ${_base64Images.length} base64 images, ${_imageUrls.length} URLs'); // Debug
+      _showSuccessSnackBar('Image added successfully!');
     } catch (e) {
+      print('Error processing image: $e'); // Debug
       _showErrorSnackBar('Error processing image: $e');
     }
   }
@@ -214,6 +220,9 @@ class _AddProductScreenState extends ConsumerState<AddProductScreen> {
       _showErrorSnackBar('Please add at least one product image');
       return;
     }
+
+    print('Creating product with ${_imageUrls.length} images'); // Debug
+    print('Image URLs: ${_imageUrls.map((url) => url.substring(0, 50)).toList()}...'); // Debug (truncated)
 
     try {
       final product = Product(
@@ -337,21 +346,21 @@ class _AddProductScreenState extends ConsumerState<AddProductScreen> {
                               ),
                             ),
                           ),
-                          // Display selected images
-                          ...List.generate(_localImages.length, (index) {
+                          // Display selected images using base64 data
+                          ...List.generate(_base64Images.length, (index) {
                             return Container(
                               width: 100,
                               height: 100,
                               margin: const EdgeInsets.only(right: 12),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                image: DecorationImage(
-                                  image: FileImage(_localImages[index]),
-                                  fit: BoxFit.cover,
-                                ),
                               ),
                               child: Stack(
                                 children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: _buildImageFromBase64(_base64Images[index]),
+                                  ),
                                   Positioned(
                                     top: 4,
                                     right: 4,
@@ -576,6 +585,47 @@ class _AddProductScreenState extends ConsumerState<AddProductScreen> {
         ),
       ),
     );
+  }
+
+  // Helper method to build image from base64 string
+  Widget _buildImageFromBase64(String base64String) {
+    try {
+      print('Building image from base64 string of length: ${base64String.length}'); // Debug
+      final bytes = base64Decode(base64String);
+      print('Decoded ${bytes.length} bytes for image display'); // Debug
+      
+      return Image.memory(
+        bytes,
+        width: 100,
+        height: 100,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) {
+          print('Error displaying base64 image: $error'); // Debug
+          return Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey[300],
+            child: Icon(
+              PhosphorIcons.imageSquare(),
+              color: Colors.grey[600],
+              size: 32,
+            ),
+          );
+        },
+      );
+    } catch (e) {
+      print('Exception in _buildImageFromBase64: $e'); // Debug
+      return Container(
+        width: 100,
+        height: 100,
+        color: Colors.grey[300],
+        child: Icon(
+          PhosphorIcons.warning(),
+          color: Colors.red,
+          size: 32,
+        ),
+      );
+    }
   }
 }
 

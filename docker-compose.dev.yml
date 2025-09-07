@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  flutter-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: tunisian_marketplace_dev
+    ports:
+      - "3000:3000"   # Flutter web dev server
+      - "8080:8080"   # Alternative web port
+      - "5000:5000"   # Firebase emulator
+      - "9100:9100"   # Flutter DevTools
+    volumes:
+      # Mount source code for hot reload
+      - .:/app
+      # Mount .pub-cache for dependency caching
+      - flutter_pub_cache:/root/.pub-cache
+      # Mount .gradle for Android dependency caching
+      - gradle_cache:/root/.gradle
+    environment:
+      - FLUTTER_WEB_AUTO_DETECT=true
+      - CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
+    stdin_open: true
+    tty: true
+    command: flutter run --web-port=3000 --web-hostname=0.0.0.0 --web-renderer=html
+    
+  # Firebase emulator (optional, for local Firebase development)
+  firebase-emulator:
+    image: node:18-alpine
+    container_name: firebase_emulator
+    working_dir: /app
+    ports:
+      - "4000:4000"   # Emulator UI
+      - "8088:8088"   # Firestore
+      - "9099:9099"   # Auth
+      - "5001:5001"   # Functions
+      - "9199:9199"   # Storage
+    volumes:
+      - .:/app
+      - firebase_cache:/root/.cache
+    command: |
+      sh -c "
+        npm install -g firebase-tools &&
+        firebase emulators:start --host 0.0.0.0
+      "
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  flutter_pub_cache:
+    driver: local
+  gradle_cache:
+    driver: local
+  firebase_cache:
+    driver: local

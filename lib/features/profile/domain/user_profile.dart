@@ -1,4 +1,10 @@
-class UserProfile {
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'user_profile.g.dart';
+
+@JsonSerializable()
+class UserProfile extends Equatable {
   final String id;
   final String email;
   final String displayName;
@@ -24,6 +30,9 @@ class UserProfile {
     this.createdAt,
     this.updatedAt,
   });
+
+  factory UserProfile.fromJson(Map<String, dynamic> json) => _$UserProfileFromJson(json);
+  Map<String, dynamic> toJson() => _$UserProfileToJson(this);
 
   UserProfile copyWith({
     String? id,
@@ -52,9 +61,25 @@ class UserProfile {
       updatedAt: updatedAt ?? this.updatedAt,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        email,
+        displayName,
+        phoneNumber,
+        photoURL,
+        addresses,
+        favoriteProductIds,
+        preferences,
+        orderStats,
+        createdAt,
+        updatedAt,
+      ];
 }
 
-class Address {
+@JsonSerializable()
+class Address extends Equatable {
   final String id;
   final String title;
   final String fullName;
@@ -76,9 +101,16 @@ class Address {
     this.phoneNumber,
     this.isDefault = false,
   });
+
+  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
+  Map<String, dynamic> toJson() => _$AddressToJson(this);
+
+  @override
+  List<Object?> get props => [id, title, fullName, street, city, postalCode, country, phoneNumber, isDefault];
 }
 
-class UserPreferences {
+@JsonSerializable()
+class UserPreferences extends Equatable {
   final String language;
   final bool notifications;
   final bool emailMarketing;
@@ -92,9 +124,16 @@ class UserPreferences {
     this.darkMode = false,
     this.currency = 'TND',
   });
+
+  factory UserPreferences.fromJson(Map<String, dynamic> json) => _$UserPreferencesFromJson(json);
+  Map<String, dynamic> toJson() => _$UserPreferencesToJson(this);
+
+  @override
+  List<Object?> get props => [language, notifications, emailMarketing, darkMode, currency];
 }
 
-class OrderStats {
+@JsonSerializable()
+class OrderStats extends Equatable {
   final int totalOrders;
   final double totalSpent;
   final int completedOrders;
@@ -106,4 +145,10 @@ class OrderStats {
     this.completedOrders = 0,
     this.pendingOrders = 0,
   });
+
+  factory OrderStats.fromJson(Map<String, dynamic> json) => _$OrderStatsFromJson(json);
+  Map<String, dynamic> toJson() => _$OrderStatsToJson(this);
+
+  @override
+  List<Object?> get props => [totalOrders, totalSpent, completedOrders, pendingOrders];
 }

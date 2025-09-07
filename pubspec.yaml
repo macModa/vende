@@ -19,6 +19,8 @@ dependencies:
   # Firebase Authentication & Core
   firebase_core: ^2.24.2
   firebase_auth: ^4.15.3
+  cloud_firestore: ^4.13.6
+  firebase_storage: ^11.6.0
   google_sign_in: ^6.1.6
   
   # Navigation
@@ -45,6 +47,7 @@ dependencies:
   intl: ^0.18.1
   uuid: ^4.2.1
   equatable: ^2.0.5
+  json_annotation: ^4.9.0
   
   # Image Handling
   image_picker: ^1.0.4
