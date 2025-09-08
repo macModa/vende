@@ -1,0 +1,239 @@
+{
+  "categories": [
+    {
+      "id": "textiles",
+      "name": "Textiles & Fabrics",
+      "description": "Traditional Tunisian textiles, carpets, and handwoven fabrics",
+      "iconUrl": "https://via.placeholder.com/64x64?text=🧵",
+      "imageUrl": "https://via.placeholder.com/400x200?text=Textiles",
+      "productCount": 15
+    },
+    {
+      "id": "pottery",
+      "name": "Pottery & Ceramics",
+      "description": "Handcrafted pottery, ceramics, and traditional clay items",
+      "iconUrl": "https://via.placeholder.com/64x64?text=🏺",
+      "imageUrl": "https://via.placeholder.com/400x200?text=Pottery",
+      "productCount": 12
+    },
+    {
+      "id": "jewelry",
+      "name": "Jewelry & Accessories",
+      "description": "Traditional silver jewelry, berber accessories, and handcrafted ornaments",
+      "iconUrl": "https://via.placeholder.com/64x64?text=💎",
+      "imageUrl": "https://via.placeholder.com/400x200?text=Jewelry",
+      "productCount": 8
+    },
+    {
+      "id": "food",
+      "name": "Traditional Food",
+      "description": "Authentic Tunisian spices, oils, dates, and preserved foods",
+      "iconUrl": "https://via.placeholder.com/64x64?text=🌶️",
+      "imageUrl": "https://via.placeholder.com/400x200?text=Food",
+      "productCount": 20
+    },
+    {
+      "id": "leather",
+      "name": "Leather Goods",
+      "description": "Handcrafted leather bags, shoes, and traditional accessories",
+      "iconUrl": "https://via.placeholder.com/64x64?text=👜",
+      "imageUrl": "https://via.placeholder.com/400x200?text=Leather",
+      "productCount": 10
+    },
+    {
+      "id": "art",
+      "name": "Art & Crafts",
+      "description": "Traditional paintings, wood carvings, and decorative items",
+      "iconUrl": "https://via.placeholder.com/64x64?text=🎨",
+      "imageUrl": "https://via.placeholder.com/400x200?text=Art",
+      "productCount": 7
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Handwoven Berber Carpet",
+      "description": "Authentic handwoven Berber carpet with traditional geometric patterns. Made from high-quality wool by skilled artisans in Kairouan. Each carpet tells a unique story through its intricate designs.",
+      "price": 450.0,
+      "category": "textiles",
+      "imageUrls": [
+        "https://via.placeholder.com/400x400?text=Berber+Carpet+1",
+        "https://via.placeholder.com/400x400?text=Berber+Carpet+2",
+        "https://via.placeholder.com/400x400?text=Berber+Carpet+3"
+      ],
+      "seller": "Kairouan Artisans Cooperative",
+      "rating": 4.8,
+      "reviewCount": 23,
+      "inStock": true,
+      "attributes": {
+        "size": "200x300cm",
+        "material": "100% Wool",
+        "origin": "Kairouan",
+        "handmade": true
+      },
+      "createdAt": "2024-01-15T10:30:00Z",
+      "updatedAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Traditional Nabeul Pottery Vase",
+      "description": "Beautiful hand-painted ceramic vase from Nabeul, featuring traditional Tunisian motifs in blue and white. Perfect for home decoration or as a unique gift.",
+      "price": 85.0,
+      "category": "pottery",
+      "imageUrls": [
+        "https://via.placeholder.com/400x400?text=Pottery+Vase+1",
+        "https://via.placeholder.com/400x400?text=Pottery+Vase+2"
+      ],
+      "seller": "Nabeul Ceramics Workshop",
+      "rating": 4.6,
+      "reviewCount": 15,
+      "inStock": true,
+      "attributes": {
+        "height": "25cm",
+        "material": "Ceramic",
+        "origin": "Nabeul",
+        "handpainted": true
+      },
+      "createdAt": "2024-01-10T14:20:00Z",
+      "updatedAt": "2024-01-10T14:20:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Berber Silver Necklace",
+      "description": "Authentic Berber silver necklace with traditional coral and amber stones. Handcrafted by skilled silversmiths using techniques passed down through generations.",
+      "price": 220.0,
+      "category": "jewelry",
+      "imageUrls": [
+        "https://via.placeholder.com/400x400?text=Silver+Necklace+1",
+        "https://via.placeholder.com/400x400?text=Silver+Necklace+2"
+      ],
+      "seller": "Atlas Mountain Jewelers",
+      "rating": 4.9,
+      "reviewCount": 31,
+      "inStock": true,
+      "attributes": {
+        "material": "925 Silver, Coral, Amber",
+        "weight": "45g",
+        "origin": "Atlas Mountains",
+        "handmade": true
+      },
+      "createdAt": "2024-01-08T09:15:00Z",
+      "updatedAt": "2024-01-08T09:15:00Z"
+    },
+    {
+      "id": "4",
+      "name": "Harissa Spice Blend",
+      "description": "Authentic Tunisian harissa spice blend made from premium red peppers, garlic, and traditional spices. Perfect for adding heat and flavor to your dishes.",
+      "price": 12.0,
+      "category": "food",
+      "imageUrls": [
+        "https://via.placeholder.com/400x400?text=Harissa+1",
+        "https://via.placeholder.com/400x400?text=Harissa+2"
+      ],
+      "seller": "Tunis Spice Market",
+      "rating": 4.7,
+      "reviewCount": 67,
+      "inStock": true,
+      "attributes": {
+        "weight": "200g",
+        "spiceLevel": "Hot",
+        "ingredients": "Red Peppers, Garlic, Coriander, Caraway, Salt",
+        "organic": true
+      },
+      "createdAt": "2024-01-20T11:45:00Z",
+      "updatedAt": "2024-01-20T11:45:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Handcrafted Leather Bag",
+      "description": "Elegant handcrafted leather handbag made from premium Tunisian leather. Features traditional tooled designs and brass hardware. Perfect for daily use or special occasions.",
+      "price": 180.0,
+      "category": "leather",
+      "imageUrls": [
+        "https://via.placeholder.com/400x400?text=Leather+Bag+1",
+        "https://via.placeholder.com/400x400?text=Leather+Bag+2",
+        "https://via.placeholder.com/400x400?text=Leather+Bag+3"
+      ],
+      "seller": "Sousse Leather Artisans",
+      "rating": 4.5,
+      "reviewCount": 19,
+      "inStock": true,
+      "attributes": {
+        "dimensions": "35x25x12cm",
+        "material": "Genuine Leather",
+        "color": "Camel Brown",
+        "handcrafted": true
+      },
+      "createdAt": "2024-01-12T16:30:00Z",
+      "updatedAt": "2024-01-12T16:30:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Traditional Wood Carving",
+      "description": "Intricate hand-carved wooden panel featuring traditional Islamic geometric patterns. Made from olive wood by master craftsmen. A beautiful piece of Tunisian artistry.",
+      "price": 320.0,
+      "category": "art",
+      "imageUrls": [
+        "https://via.placeholder.com/400x400?text=Wood+Carving+1",
+        "https://via.placeholder.com/400x400?text=Wood+Carving+2"
+      ],
+      "seller": "Medina Wood Carvers",
+      "rating": 4.8,
+      "reviewCount": 12,
+      "inStock": true,
+      "attributes": {
+        "dimensions": "40x30x3cm",
+        "material": "Olive Wood",
+        "origin": "Tunis Medina",
+        "handcarved": true
+      },
+      "createdAt": "2024-01-05T13:20:00Z",
+      "updatedAt": "2024-01-05T13:20:00Z"
+    },
+    {
+      "id": "7",
+      "name": "Merguez Spice Mix",
+      "description": "Authentic spice blend for making traditional Tunisian merguez sausages. Contains fennel, coriander, chili, and other aromatic spices in perfect proportions.",
+      "price": 8.0,
+      "category": "food",
+      "imageUrls": [
+        "https://via.placeholder.com/400x400?text=Merguez+Spice+1"
+      ],
+      "seller": "Tunis Spice Market",
+      "rating": 4.6,
+      "reviewCount": 34,
+      "inStock": true,
+      "attributes": {
+        "weight": "100g",
+        "ingredients": "Fennel, Coriander, Chili, Cumin, Paprika",
+        "organic": false
+      },
+      "createdAt": "2024-01-18T08:10:00Z",
+      "updatedAt": "2024-01-18T08:10:00Z"
+    },
+    {
+      "id": "8",
+      "name": "Tunisian Silk Scarf",
+      "description": "Luxurious silk scarf with traditional Tunisian patterns. Hand-printed using natural dyes. Soft, elegant, and perfect for any season.",
+      "price": 95.0,
+      "category": "textiles",
+      "imageUrls": [
+        "https://via.placeholder.com/400x400?text=Silk+Scarf+1",
+        "https://via.placeholder.com/400x400?text=Silk+Scarf+2"
+      ],
+      "seller": "Sfax Silk Weavers",
+      "rating": 4.7,
+      "reviewCount": 28,
+      "inStock": true,
+      "attributes": {
+        "dimensions": "180x70cm",
+        "material": "100% Silk",
+        "care": "Dry Clean Only",
+        "handprinted": true
+      },
+      "createdAt": "2024-01-14T12:00:00Z",
+      "updatedAt": "2024-01-14T12:00:00Z"
+    }
+  ],
+  "featured_products": ["1", "3", "5", "8"]
+}

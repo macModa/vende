@@ -1,0 +1,59 @@
+# Flutter build artifacts (allow build/web for local Docker builds)
+# build/
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Documentation
+README.md
+CHANGELOG.md
+*.md
+
+# Test files
+test/
+coverage/
+
+# Environment files
+.env*
+
+# Firebase
+firebase.json
+.firebaserc
+firestore.rules
+firestore.indexes.json
+
+# Platform specific
+android/
+ios/
+linux/
+macos/
+windows/
+
+# Logs
+*.log
